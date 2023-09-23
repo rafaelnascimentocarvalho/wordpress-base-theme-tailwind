@@ -1,0 +1,1 @@
+<?php render('default/footer'); ?>
