@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply text-zinc-600;
+}
+
+* {
+  @apply outline-0;
+}
+
+.ease {
+  transition: all 0.2s ease;
+}
+
+.container-medium {
+  @apply mx-auto max-w-[1200px] px-[1rem];
+}
+
+.btn,
+.button {
+  font-weight: 500 !important;
+  transition: all 0.2s ease;
+  @apply py-4 px-6 cursor-pointer inline-block leading-tight items-center justify-center;
+}
