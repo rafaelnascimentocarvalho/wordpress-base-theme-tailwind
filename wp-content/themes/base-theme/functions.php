@@ -5,8 +5,11 @@ date_default_timezone_set('America/Sao_Paulo');
 
 add_action( 'wp_enqueue_scripts', 'theme_scripts');
 
-// Page options
+// Helper
 include('helpers/autoload.php');
+
+// Custom fields
+include('fields/autoload.php');
 
 // Widgets register
 include('widgets/autoload.php');
@@ -44,6 +47,34 @@ function register_menus() {
   );
 }
 add_action('after_setup_theme', 'register_menus');
+
+function suggest_page_create() {
+  $templates = array(
+      'front-page.php' => 'Home',
+      'services.php' => 'Services',
+      'about.php' => 'About',
+      'contact.php' => 'Contact',
+  );
+
+  $pages = [];
+
+  foreach ($templates as $template_file => $template_name) {
+    $page_exists = get_page_by_path($template_file);
+
+    if (!$page_exists) {
+      $pages[] = $template_name;
+    }
+  }
+  
+  if(count($pages)){
+    $message = sprintf('Sugestão: Crie páginas com os seguintes modelos: %s.', implode(', ', $pages));
+    add_settings_error('sugestao-criacao-paginas', '', $message, 'notice');
+  }
+}
+add_action('admin_init', 'suggest_page_create');
+add_action('admin_notices', function() {
+  settings_errors('sugestao-criacao-paginas');
+});
 
 function render($src, $props = []){
  include('src/'.$src.'.php');

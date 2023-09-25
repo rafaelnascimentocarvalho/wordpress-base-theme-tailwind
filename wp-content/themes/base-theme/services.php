@@ -1,7 +1,7 @@
 <?php
 
 /*
-Template Name: Service
+Template Name: Services
 */
 
 get_header();

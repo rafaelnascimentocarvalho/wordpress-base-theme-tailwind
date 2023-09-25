@@ -6,8 +6,18 @@ Template Name: Home
 
 get_header();
 
+$content = get_fields(get_option('page_on_front'));
+
 ?>
-<section class="h-[32rem] bg-slate-300"></section>
+<section class="bg-slate-300">
+  <div class="container-medium relative h-[32rem]">
+    <div class="absolute left-0 bottom-0 px-4 pb-20">
+      <h1 class="font-bold text-slate-900 text-[4rem]">
+        <?= $content["main_banner"]; ?>
+      </h1>
+    </div>
+  </div>
+</section>
 
 <section class="my-32">
   <div class="container-medium">
