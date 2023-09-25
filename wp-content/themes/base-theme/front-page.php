@@ -6,14 +6,14 @@ Template Name: Home
 
 get_header();
 
-$content = get_fields(get_option('page_on_front'));
+$page = get_fields(get_option('page_on_front'));
 
 ?>
 <section class="bg-slate-300">
   <div class="container-medium relative h-[32rem]">
     <div class="absolute left-0 bottom-0 px-4 pb-20">
       <h1 class="font-bold text-slate-900 text-[4rem]">
-        <?= $content["main_banner"]; ?>
+        <?= isset($page["main_banner"]) ? $page["main_banner"] : ""; ?>
       </h1>
     </div>
   </div>
